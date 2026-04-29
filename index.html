@@ -326,6 +326,111 @@ main.omenu{padding:1.1rem 1rem 5.5rem;max-width:1100px;margin:0 auto;}
 .legend{display:flex;gap:0.9rem;margin-bottom:0.9rem;flex-wrap:wrap;}
 .leg-item{display:flex;align-items:center;gap:5px;font-size:0.73rem;color:var(--gt);}
 .leg-dot{width:8px;height:8px;border-radius:50%;}
+
+/* ══════════ STAFF MANUAL ORDER PANEL ══════════ */
+.staff-order-layout{display:grid;grid-template-columns:1fr 340px;gap:1.1rem;height:calc(100vh - 130px);}
+@media(max-width:1000px){.staff-order-layout{grid-template-columns:1fr;height:auto;}}
+
+/* Left: Menu Browser */
+.staff-menu-col{display:flex;flex-direction:column;overflow:hidden;background:white;border-radius:14px;box-shadow:var(--sh);}
+.staff-menu-top{padding:0.85rem 1rem;border-bottom:1px solid var(--gl);}
+.staff-search{display:flex;align-items:center;background:var(--clight);border:1.5px solid rgba(139,69,19,0.14);border-radius:50px;padding:6px 12px;gap:7px;}
+.staff-search:focus-within{border-color:var(--bl);}
+.staff-search input{border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:0.84rem;color:var(--bd);background:transparent;flex:1;}
+.staff-cat-tabs{display:flex;gap:0.4rem;margin-top:0.65rem;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;}
+.staff-cat-tabs::-webkit-scrollbar{display:none;}
+.staff-cat-tab{flex-shrink:0;padding:4px 12px;border-radius:50px;border:1.5px solid rgba(139,69,19,0.16);background:white;font-size:0.75rem;font-weight:500;cursor:pointer;transition:all 0.15s;font-family:'DM Sans',sans-serif;color:var(--bm);}
+.staff-cat-tab.active{background:var(--bd);border-color:var(--bd);color:var(--gold);}
+.staff-items-scroll{flex:1;overflow-y:auto;padding:0.75rem;}
+.staff-items-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem;}
+@media(max-width:1200px){.staff-items-grid{grid-template-columns:repeat(2,1fr);}}
+.staff-item{background:var(--clight);border:1.5px solid transparent;border-radius:11px;padding:0.65rem;cursor:pointer;transition:all 0.18s;display:flex;flex-direction:column;gap:5px;}
+.staff-item:hover{border-color:var(--gold);background:rgba(212,168,67,0.06);transform:translateY(-1px);}
+.staff-item-img{width:100%;height:70px;border-radius:8px;object-fit:cover;background:var(--gl);}
+.staff-item-emoji{width:100%;height:70px;border-radius:8px;background:linear-gradient(135deg,var(--gl),var(--cream));display:flex;align-items:center;justify-content:center;font-size:2rem;}
+.staff-item-name{font-weight:600;font-size:0.76rem;color:var(--bd);line-height:1.3;}
+.staff-item-meta{display:flex;align-items:center;justify-content:space-between;}
+.staff-item-price{font-weight:700;font-size:0.78rem;color:var(--bw);}
+.staff-item-cat{font-size:0.6rem;color:var(--gt);background:var(--gl);padding:1px 6px;border-radius:4px;}
+.staff-add-quick{width:22px;height:22px;border-radius:50%;background:var(--bd);color:white;border:none;font-size:0.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.15s;}
+.staff-add-quick:hover{background:var(--gold);color:var(--bd);}
+
+/* Right: Order Builder */
+.staff-order-col{display:flex;flex-direction:column;gap:0.75rem;overflow:hidden;}
+.staff-order-card{background:white;border-radius:14px;box-shadow:var(--sh);display:flex;flex-direction:column;overflow:hidden;flex:1;}
+.staff-order-hd{background:var(--bd);padding:0.85rem 1.1rem;display:flex;align-items:center;justify-content:space-between;}
+.staff-order-hd h3{font-family:'Playfair Display',serif;color:white;font-size:1rem;}
+.staff-clear-btn{font-size:0.7rem;color:rgba(255,255,255,0.5);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.staff-clear-btn:hover{color:var(--gold);}
+
+/* Table selector inside order col */
+.staff-tbl-picker{padding:0.75rem 1.1rem;border-bottom:1px solid var(--gl);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.staff-tbl-label{font-size:0.73rem;font-weight:600;color:var(--gt);flex-shrink:0;}
+.staff-tbl-sel{display:flex;gap:4px;flex-wrap:wrap;flex:1;}
+.staff-tbl-btn{padding:3px 9px;border-radius:50px;border:1.5px solid rgba(139,69,19,0.18);background:white;font-size:0.7rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'DM Sans',sans-serif;color:var(--bd);}
+.staff-tbl-btn:hover{border-color:var(--gold);background:rgba(212,168,67,0.07);}
+.staff-tbl-btn.active{background:var(--bd);border-color:var(--bd);color:var(--gold);}
+.staff-tbl-btn.occupied{border-color:rgba(230,81,0,0.4);color:var(--orange);}
+
+.staff-order-items{flex:1;overflow-y:auto;padding:0.75rem 1.1rem;}
+.staff-empty-order{text-align:center;padding:2rem;color:var(--gt);font-size:0.84rem;}
+.staff-order-line{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--gl);}
+.staff-order-line:last-child{border-bottom:none;}
+.staff-ol-emoji{font-size:1.1rem;width:28px;text-align:center;flex-shrink:0;}
+.staff-ol-info{flex:1;min-width:0;}
+.staff-ol-name{font-weight:600;font-size:0.8rem;color:var(--bd);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.staff-ol-detail{font-size:0.66rem;color:var(--gt);}
+.staff-ol-qty{display:flex;align-items:center;gap:4px;}
+.staff-sqb{width:19px;height:19px;border-radius:50%;border:1px solid rgba(139,69,19,0.2);background:white;cursor:pointer;font-size:0.75rem;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
+.staff-sqb:hover{background:var(--bd);color:white;}
+.staff-ol-q{font-weight:700;font-size:0.8rem;min-width:16px;text-align:center;}
+.staff-ol-price{font-weight:700;font-size:0.78rem;color:var(--bw);min-width:52px;text-align:right;}
+.staff-ol-rm{background:none;border:none;color:rgba(198,40,40,0.5);cursor:pointer;font-size:0.75rem;padding:2px;}
+.staff-ol-rm:hover{color:var(--red);}
+
+.staff-order-footer{border-top:2px solid var(--gl);padding:0.85rem 1.1rem;background:var(--clight);}
+.staff-pay-row{display:flex;gap:0.4rem;margin-bottom:0.75rem;}
+.staff-pay-btn{flex:1;padding:6px;border:1.5px solid rgba(139,69,19,0.18);border-radius:8px;text-align:center;font-size:0.72rem;font-weight:600;cursor:pointer;transition:all 0.15s;background:white;font-family:'DM Sans',sans-serif;color:var(--bd);}
+.staff-pay-btn.active{background:var(--bd);border-color:var(--bd);color:white;}
+.staff-totals-mini{margin-bottom:0.75rem;}
+.staff-tot-row{display:flex;justify-content:space-between;font-size:0.78rem;color:var(--gt);margin-bottom:2px;}
+.staff-tot-row.big{font-weight:700;color:var(--bd);font-size:0.9rem;border-top:1px solid var(--gl);padding-top:5px;margin-top:4px;}
+.staff-discount-row{display:flex;align-items:center;gap:6px;margin-bottom:0.65rem;}
+.staff-discount-row label{font-size:0.73rem;color:var(--gt);}
+.staff-discount-row input{flex:1;border:1.5px solid rgba(139,69,19,0.15);border-radius:7px;padding:4px 8px;font-family:'DM Sans',sans-serif;font-size:0.78rem;color:var(--bd);outline:none;}
+.staff-discount-row input:focus{border-color:var(--bl);}
+.staff-place-btn{width:100%;padding:11px;background:var(--bd);color:var(--gold);border:none;border-radius:50px;font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;cursor:pointer;letter-spacing:1px;transition:all 0.2s;}
+.staff-place-btn:hover:not(:disabled){background:var(--bw);color:white;}
+.staff-place-btn:disabled{background:rgba(44,26,14,0.12);color:rgba(44,26,14,0.3);cursor:not-allowed;}
+
+/* Item customization mini modal inside staff panel */
+.staff-cust-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:350;align-items:center;justify-content:center;}
+.staff-cust-overlay.open{display:flex;}
+.staff-cust-sheet{background:white;border-radius:18px;width:360px;max-width:95vw;overflow:hidden;animation:popIn 0.2s ease;}
+@keyframes popIn{from{transform:scale(0.9);opacity:0;}to{transform:scale(1);opacity:1;}}
+.staff-cust-hd{background:var(--bd);padding:1rem 1.3rem;display:flex;align-items:center;justify-content:space-between;}
+.staff-cust-hd h3{font-family:'Playfair Display',serif;color:white;font-size:1rem;}
+.staff-cust-close{background:rgba(255,255,255,0.14);border:none;border-radius:50%;width:28px;height:28px;color:white;cursor:pointer;font-size:0.85rem;display:flex;align-items:center;justify-content:center;}
+.staff-cust-body{padding:1.2rem;}
+.scl{font-weight:600;font-size:0.82rem;color:var(--bd);margin-bottom:0.4rem;}
+.scr{display:flex;gap:0.4rem;margin-bottom:0.9rem;flex-wrap:wrap;}
+.sc-btn{padding:5px 14px;border-radius:50px;border:1.5px solid rgba(139,69,19,0.2);background:white;font-size:0.78rem;cursor:pointer;transition:all 0.14s;font-family:'DM Sans',sans-serif;color:var(--bd);}
+.sc-btn.sel{background:var(--bd);color:white;border-color:var(--bd);}
+.sc-qty-row{display:flex;align-items:center;gap:10px;margin-bottom:0.85rem;}
+.sc-qb{width:30px;height:30px;border-radius:50%;border:1.5px solid rgba(139,69,19,0.2);background:white;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all 0.14s;}
+.sc-qb:hover{background:var(--bd);color:white;}
+.sc-qv{font-weight:700;font-size:1rem;min-width:20px;text-align:center;}
+.sc-note{width:100%;border:1.5px solid rgba(139,69,19,0.16);border-radius:9px;padding:7px 10px;font-family:'DM Sans',sans-serif;font-size:0.82rem;color:var(--bd);outline:none;margin-bottom:0.9rem;}
+.sc-note:focus{border-color:var(--bl);}
+.sc-add-btn{width:100%;padding:10px;background:var(--bd);color:var(--gold);border:none;border-radius:50px;font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;cursor:pointer;letter-spacing:1px;transition:all 0.2s;}
+.sc-add-btn:hover{background:var(--bw);color:white;}
+
+/* Staff success toast */
+.staff-success-banner{display:none;background:#E8F5E9;border:1.5px solid var(--glight);border-radius:11px;padding:0.85rem 1.1rem;margin-bottom:0.75rem;align-items:center;gap:10px;}
+.staff-success-banner.show{display:flex;}
+.ssb-icon{font-size:1.3rem;}
+.ssb-text{flex:1;font-size:0.82rem;color:var(--green);font-weight:600;}
+.ssb-id{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--bd);}
 </style>
 </head>
 <body>
@@ -483,7 +588,7 @@ main.omenu{padding:1.1rem 1rem 5.5rem;max-width:1100px;margin:0 auto;}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Tables
       </button>
       <button class="sidebar-item" onclick="switchAdminPanel('menu',this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>Menu
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>Manual Order
       </button>
       <button class="sidebar-item" onclick="switchAdminPanel('alert',this)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Alert
@@ -502,6 +607,7 @@ main.omenu{padding:1.1rem 1rem 5.5rem;max-width:1100px;margin:0 auto;}
       <div class="live-badge"><div class="live-dot"></div>Live</div>
     </div>
     <div class="admin-content">
+
       <!-- HOME -->
       <div class="admin-panel active" id="panel-home">
         <div class="stats-row">
@@ -519,6 +625,7 @@ main.omenu{padding:1.1rem 1rem 5.5rem;max-width:1100px;margin:0 auto;}
         </div>
         <div class="tbl-grid" id="homeTableGrid"></div>
       </div>
+
       <!-- ORDERS KDS -->
       <div class="admin-panel" id="panel-orders">
         <div class="kds-tabs">
@@ -530,6 +637,7 @@ main.omenu{padding:1.1rem 1rem 5.5rem;max-width:1100px;margin:0 auto;}
         </div>
         <div class="orders-grid" id="ordersGrid"></div>
       </div>
+
       <!-- TABLES -->
       <div class="admin-panel" id="panel-tables">
         <div class="section-title-a">Table Status</div>
@@ -541,11 +649,63 @@ main.omenu{padding:1.1rem 1rem 5.5rem;max-width:1100px;margin:0 auto;}
         </div>
         <div class="tbl-grid" id="tableGrid" style="margin-top:0.9rem;"></div>
       </div>
-      <!-- MENU -->
+
+      <!-- ══ STAFF MANUAL ORDER PANEL ══ -->
       <div class="admin-panel" id="panel-menu">
-        <div class="section-title-a">Menu Items</div>
-        <div id="adminMenuList"></div>
+        <div class="staff-success-banner" id="staffSuccessBanner">
+          <div class="ssb-icon">✅</div>
+          <div class="ssb-text">Order placed successfully! <span class="ssb-id" id="staffSuccessId"></span></div>
+        </div>
+        <div class="staff-order-layout">
+          <!-- LEFT: Menu Browser -->
+          <div class="staff-menu-col">
+            <div class="staff-menu-top">
+              <div class="staff-search">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A7968" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                <input type="text" id="staffSearchInput" placeholder="Search items..." oninput="staffHandleSearch()">
+              </div>
+              <div class="staff-cat-tabs" id="staffCatTabs"></div>
+            </div>
+            <div class="staff-items-scroll">
+              <div class="staff-items-grid" id="staffItemsGrid"></div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Order Builder -->
+          <div class="staff-order-col">
+            <div class="staff-order-card">
+              <div class="staff-order-hd">
+                <h3>🧾 Current Order</h3>
+                <button class="staff-clear-btn" onclick="staffClearOrder()">Clear All ✕</button>
+              </div>
+
+              <!-- Table Selector -->
+              <div class="staff-tbl-picker">
+                <span class="staff-tbl-label">Table:</span>
+                <div class="staff-tbl-sel" id="staffTblSel"></div>
+              </div>
+
+              <div class="staff-order-items" id="staffOrderItems">
+                <div class="staff-empty-order">
+                  <div style="font-size:2rem;margin-bottom:.5rem;">🛒</div>
+                  <p>Tap any item from the menu to add it here</p>
+                </div>
+              </div>
+
+              <div class="staff-order-footer">
+                <div class="staff-pay-row" id="staffPayRow"></div>
+                <div class="staff-discount-row">
+                  <label>Discount ₱</label>
+                  <input type="number" id="staffDiscount" min="0" value="0" placeholder="0" oninput="staffRenderFooter()">
+                </div>
+                <div class="staff-totals-mini" id="staffTotals"></div>
+                <button class="staff-place-btn" id="staffPlaceBtn" onclick="staffPlaceOrder()" disabled>Place Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
       <!-- ALERT -->
       <div class="admin-panel" id="panel-alert">
         <div class="alert-view">
@@ -561,135 +721,119 @@ main.omenu{padding:1.1rem 1rem 5.5rem;max-width:1100px;margin:0 auto;}
           </div>
         </div>
       </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Staff Item Customization Modal -->
+<div class="staff-cust-overlay" id="staffCustOverlay" onclick="if(event.target===this)closeStaffCust()">
+  <div class="staff-cust-sheet">
+    <div class="staff-cust-hd">
+      <h3 id="scItemName">Item</h3>
+      <button class="staff-cust-close" onclick="closeStaffCust()">✕</button>
+    </div>
+    <div class="staff-cust-body">
+      <div id="scTypeSection">
+        <div class="scl">Type</div>
+        <div class="scr" id="scTypeOpts"></div>
+      </div>
+      <div id="scSizeSection">
+        <div class="scl">Size</div>
+        <div class="scr" id="scSizeOpts"></div>
+      </div>
+      <div class="scl">Quantity</div>
+      <div class="sc-qty-row">
+        <button class="sc-qb" onclick="scChangeQty(-1)">−</button>
+        <span class="sc-qv" id="scQtyVal">1</span>
+        <button class="sc-qb" onclick="scChangeQty(1)">+</button>
+      </div>
+      <div class="scl">Note (optional)</div>
+      <input type="text" class="sc-note" id="scNote" placeholder="e.g. less sugar, extra hot...">
+      <button class="sc-add-btn" onclick="scConfirmAdd()">Add to Order</button>
     </div>
   </div>
 </div>
 
 <script>
-/* ══ CATEGORY IMAGES — replace URLs with your own ══ */
+/* ══ DATA ══ */
 const CAT_IMAGES={
-  Coffee:   'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=80&q=70',
-  Frappe:   'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=80&q=70',
+  Coffee:'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=80&q=70',
+  Frappe:'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=80&q=70',
   'Milk-Based':'https://images.unsplash.com/photo-1558857563-b371033873b8?w=80&q=70',
-  Snack:    'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=80&q=70',
-  Dessert:  'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=80&q=70',
+  Snack:'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=80&q=70',
+  Dessert:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=80&q=70',
 };
-
-/* ══ ITEM IMAGES — replace URLs with your own images ══
-   Key = item name exactly. Leave '' to use emoji fallback. */
 const ITEM_IMAGES={
-  'Espresso':            'https://scontent.fcrk2-1.fna.fbcdn.net/v/t1.15752-9/668995266_3864731190500258_6798708586765315946_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=9f807c&_nc_ohc=f9ZGzWkguQcQ7kNvwGZ-9d3&_nc_oc=AdpI9tRvdFfmo6JGGwVjCY-ECLN2y8B8vXij-BJB5a-2tSSDItvyT84F-7YFJ6OFcgE&_nc_zt=23&_nc_ht=scontent.fcrk2-1.fna&_nc_ss=7a3a8&oh=03_Q7cD5AFtMTgWelShKbXp_XO4oUk4CB9dTJWa0w-F9EvuDpZe_A&oe=6A0AE920',
-  'Americano':           'https://scontent.fcrk4-2.fna.fbcdn.net/v/t39.30808-6/489149907_3964517513876340_1671713616654944236_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=53a332&_nc_ohc=nvwEyApG1e0Q7kNvwFh4XKI&_nc_oc=AdpNCxL_ZfA6_Jo9ZQECnskBxtKlJYvpHml0vBtyrg_BWYlaD96YFTUOIDjQ5-H5gjs&_nc_zt=23&_nc_ht=scontent.fcrk4-2.fna&_nc_gid=yXsESLx4ng3D5vBzCGqbkA&_nc_ss=7a3a8&oh=00_Af0aTorUoSGMGpJnZgFiaHf0Rgfm-I47kTD1xUgU9ZgQOg&oe=69E94193',
-  'Cappuccino':          'https://scontent.fcrk2-3.fna.fbcdn.net/v/t39.30808-6/673846263_1535764718556525_1370322982517594123_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=dnl2dDo_IskQ7kNvwGIgnE1&_nc_oc=Ado-jyZbVWr_-fNYB78HBALg_hQtZLZnym-V0uDnJp20fW62mc9YSE3LS0D8YoegxKg&_nc_zt=23&_nc_ht=scontent.fcrk2-3.fna&_nc_gid=Jcts-lR-sdVdXywKEHZ4og&_nc_ss=7a3a8&oh=00_Af1ElFw1wkGF942XyNvMCxnPMoG9xcOfmFTbBNma7e9bCA&oe=69E9435E',
-  'Latte':               'https://scontent.fcrk2-1.fna.fbcdn.net/v/t1.15752-9/645498048_1455568805944735_3224774563183970203_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=9f807c&_nc_ohc=dz_d6yyOdcQQ7kNvwGKV8Pz&_nc_oc=AdqwncIaN8EzuGh1MV9YodAk67NNMZLERFgoJ0Wl4kwxY_4KmGTxAQ9-Y8HXP7fPY78&_nc_zt=23&_nc_ht=scontent.fcrk2-1.fna&_nc_ss=7a3a8&oh=03_Q7cD5AFpeQocyXUnqiDsXhqe2G3pCofkgXMN-UyajpLNZPPY7Q&oe=6A0B0924',
-  'Caramel Macchiato':   'https://instagram.fcrk2-1.fna.fbcdn.net/v/t51.82787-19/655964307_18076792277413490_2833777512967473692_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fcrk2-1.fna.fbcdn.net&_nc_cat=102&_nc_oc=Q6cZ2gFRWHLl-TipApIP6nK8V41r4FiOBoCuNibmfGxwUIcLDc4P3KtfwnqSvCTKseJE5E8&_nc_ohc=Fr7eaWATzBAQ7kNvwHDLEAD&_nc_gid=KS2Rz98fFACKJmMo-t7frg&edm=ALGbJPMBAAAA&ccb=7-5&oh=00_Af08GbFUeMJzxzwU5ViD5YdgzeYK12JhHIEnnKkohSrSkg&oe=69E963A7&_nc_sid=7d3ac5',
-  'Mocha':               'https://instagram.fcrk2-1.fna.fbcdn.net/v/t51.82787-19/655964307_18076792277413490_2833777512967473692_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fcrk2-1.fna.fbcdn.net&_nc_cat=102&_nc_oc=Q6cZ2gFRWHLl-TipApIP6nK8V41r4FiOBoCuNibmfGxwUIcLDc4P3KtfwnqSvCTKseJE5E8&_nc_ohc=Fr7eaWATzBAQ7kNvwHDLEAD&_nc_gid=KS2Rz98fFACKJmMo-t7frg&edm=ALGbJPMBAAAA&ccb=7-5&oh=00_Af08GbFUeMJzxzwU5ViD5YdgzeYK12JhHIEnnKkohSrSkg&oe=69E963A7&_nc_sid=7d3ac5',
-  'Vanilla Latte':       'https://instagram.fcrk2-1.fna.fbcdn.net/v/t51.82787-19/539837164_17999994194804681_8300490688932136838_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fcrk2-1.fna.fbcdn.net&_nc_cat=105&_nc_oc=Q6cZ2gFI0xFHKdClTpdu4DFVWnBSIi3mPZUWwT9StdEoLPrY_kKhna-h_d53hyJvklw2xhI&_nc_ohc=iGwbeQnYp6cQ7kNvwGHRVP_&_nc_gid=evqpbN5Ri-86mSCPiDbdBA&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_Af0W9bEzB2Rxo49wwU9jS1KbBPlqtFRctjZZiFpu3da7KQ&oe=69E93EC4&_nc_sid=7a9f4b',
-  'Hazelnut Coffee':     'https://instagram.fcrk2-1.fna.fbcdn.net/v/t51.82787-19/655964307_18076792277413490_2833777512967473692_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fcrk2-1.fna.fbcdn.net&_nc_cat=102&_nc_oc=Q6cZ2gHgylo5JLQEnkARI986biyPrXVM0nHMlbOGYkC6Vf9ih-0vq-CqRQ8ewuMx9bWKckA&_nc_ohc=Fr7eaWATzBAQ7kNvwHDLEAD&_nc_gid=mdfhwETPAOjkDc1Y0_hzMg&edm=ALGbJPMBAAAA&ccb=7-5&oh=00_Af185zXSXs1POdWX508WdbkPnUB6ZEQMDRQSYL1iS0fqGg&oe=69E963A7&_nc_sid=7d3ac5',
-  'Spanish Latte':       'https://instagram.fcrk2-1.fna.fbcdn.net/v/t51.82787-19/655964307_18076792277413490_2833777512967473692_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fcrk2-1.fna.fbcdn.net&_nc_cat=102&_nc_oc=Q6cZ2gHgylo5JLQEnkARI986biyPrXVM0nHMlbOGYkC6Vf9ih-0vq-CqRQ8ewuMx9bWKckA&_nc_ohc=Fr7eaWATzBAQ7kNvwHDLEAD&_nc_gid=mdfhwETPAOjkDc1Y0_hzMg&edm=ALGbJPMBAAAA&ccb=7-5&oh=00_Af185zXSXs1POdWX508WdbkPnUB6ZEQMDRQSYL1iS0fqGg&oe=69E963A7&_nc_sid=7d3ac5',
-  'Cold Brew':           'https://scontent.fcrk2-1.fna.fbcdn.net/v/t1.15752-9/645498048_1455568805944735_3224774563183970203_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=9f807c&_nc_ohc=dz_d6yyOdcQQ7kNvwGKV8Pz&_nc_oc=AdqwncIaN8EzuGh1MV9YodAk67NNMZLERFgoJ0Wl4kwxY_4KmGTxAQ9-Y8HXP7fPY78&_nc_zt=23&_nc_ht=scontent.fcrk2-1.fna&_nc_ss=7a3a8&oh=03_Q7cD5AFpeQocyXUnqiDsXhqe2G3pCofkgXMN-UyajpLNZPPY7Q&oe=6A0B0924',
-  'Coffee Frappe':       'https://scontent.fcrk4-2.fna.fbcdn.net/v/t1.15752-9/582330092_26117911804476830_3053487163137581342_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=9f807c&_nc_ohc=Owr-gGoSo8wQ7kNvwH-MDG3&_nc_oc=AdpGNnRNSeqyXXUsjtRJuOMD382N4mRfieNQjNpF2J_gs8oUo4bJO5rvsuPpF3Zt1ZE&_nc_zt=23&_nc_ht=scontent.fcrk4-2.fna&_nc_ss=7a3a8&oh=03_Q7cD5AE49mtIFdBLk9GxWjjAPgW8t16qkQ3o44-yMLLV_L9liw&oe=6A0AF561',
-  'Mocha Frappe':        'https://instagram.fcrk2-1.fna.fbcdn.net/v/t51.82787-19/539837164_17999994194804681_8300490688932136838_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fcrk2-1.fna.fbcdn.net&_nc_cat=105&_nc_oc=Q6cZ2gFI0xFHKdClTpdu4DFVWnBSIi3mPZUWwT9StdEoLPrY_kKhna-h_d53hyJvklw2xhI&_nc_ohc=iGwbeQnYp6cQ7kNvwGHRVP_&_nc_gid=evqpbN5Ri-86mSCPiDbdBA&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_Af0W9bEzB2Rxo49wwU9jS1KbBPlqtFRctjZZiFpu3da7KQ&oe=69E93EC4&_nc_sid=7a9f4b',
-  'Caramel Frappe':      'https://scontent.fcrk4-2.fna.fbcdn.net/v/t1.15752-9/582330092_26117911804476830_3053487163137581342_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=9f807c&_nc_ohc=Owr-gGoSo8wQ7kNvwH-MDG3&_nc_oc=AdpGNnRNSeqyXXUsjtRJuOMD382N4mRfieNQjNpF2J_gs8oUo4bJO5rvsuPpF3Zt1ZE&_nc_zt=23&_nc_ht=scontent.fcrk4-2.fna&_nc_ss=7a3a8&oh=03_Q7cD5AE49mtIFdBLk9GxWjjAPgW8t16qkQ3o44-yMLLV_L9liw&oe=6A0AF561',
-  'Java Chip Frappe':    'https://scontent.fcrk4-2.fna.fbcdn.net/v/t1.15752-9/589019906_1432287488231604_1872785800184385539_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_ohc=c-DrPdhUNlcQ7kNvwHVkvcE&_nc_oc=AdrHaPePucNmTqUARMyMM_ll2rVDNRcl6BJatrtLUSkXrOQu08fmV3HQYqFlBAgQxRY&_nc_zt=23&_nc_ht=scontent.fcrk4-2.fna&_nc_ss=7a3a8&oh=03_Q7cD5AEdVARpmUP-zH4-xGmPpiuTsbAi0NHUwMZQsz0gIQKKYQ&oe=6A0B0A84',
-  'Vanilla Cream Frappe':'https://scontent.fcrk4-2.fna.fbcdn.net/v/t1.15752-9/582330092_26117911804476830_3053487163137581342_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=9f807c&_nc_ohc=Owr-gGoSo8wQ7kNvwH-MDG3&_nc_oc=AdpGNnRNSeqyXXUsjtRJuOMD382N4mRfieNQjNpF2J_gs8oUo4bJO5rvsuPpF3Zt1ZE&_nc_zt=23&_nc_ht=scontent.fcrk4-2.fna&_nc_ss=7a3a8&oh=03_Q7cD5AE49mtIFdBLk9GxWjjAPgW8t16qkQ3o44-yMLLV_L9liw&oe=6A0AF561',
-  'Matcha Frappe':       'https://images.unsplash.com/photo-1558857563-b371033873b8?w=400&q=70',
-  'Chocolate Frappe':    'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400&q=70',
-  'Oreo Frappe':         'https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=70',
-  'Strawberry Frappe':   'https://scontent.fcrk4-2.fna.fbcdn.net/v/t1.15752-9/597555038_1194202065510199_2918454369703894241_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=615S4aKG7b0Q7kNvwF4OqB5&_nc_oc=AdpFMkNGoCyyOmIjf0rUY41E3pnnb6I8QhkxIW_p5VkVlvC-MrTTNAgardznDMe6N3w&_nc_zt=23&_nc_ht=scontent.fcrk4-2.fna&_nc_ss=7a3a8&oh=03_Q7cD5AGYqIRfhaG3d7JyFaPLF6U_8TQLf33UdNtW7b1eYjQhCA&oe=6A0B0638',
-  'Mango Frappe':        'https://scontent.fcrk4-2.fna.fbcdn.net/v/t1.15752-9/597555038_1194202065510199_2918454369703894241_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=615S4aKG7b0Q7kNvwF4OqB5&_nc_oc=AdpFMkNGoCyyOmIjf0rUY41E3pnnb6I8QhkxIW_p5VkVlvC-MrTTNAgardznDMe6N3w&_nc_zt=23&_nc_ht=scontent.fcrk4-2.fna&_nc_ss=7a3a8&oh=03_Q7cD5AGYqIRfhaG3d7JyFaPLF6U_8TQLf33UdNtW7b1eYjQhCA&oe=6A0B0638',
-  'Classic Milk Tea':    'https://images.unsplash.com/photo-1558857563-b371033873b8?w=400&q=70',
-  'Wintermelon Milk Tea':'https://images.unsplash.com/photo-1558857563-b371033873b8?w=400&q=70',
-  'Taro Milk Tea':       'https://images.unsplash.com/photo-1558857563-b371033873b8?w=400&q=70',
-  'Matcha Latte':        'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=400&q=70',
-  'Chocolate Milk':      'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400&q=70',
-  'Strawberry Milk':     'https://images.unsplash.com/photo-1553909489-cd47e0907980?w=400&q=70',
-  'Banana Milk':         'https://images.unsplash.com/photo-1553909489-cd47e0907980?w=400&q=70',
-  'Honey Milk':          'https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=400&q=70',
-  'Brown Sugar Milk':    'https://images.unsplash.com/photo-1558857563-b371033873b8?w=400&q=70',
-  'Almond Milk Drink':   'https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=400&q=70',
-  'Clubhouse Sandwich':  'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=70',
-  'Ham & Cheese Sandwich':'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=70',
-  'Tuna Sandwich':       'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=70',
-  'French Fries':        'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=400&q=70',
-  'Nachos with Cheese':  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=70',
-  'Chicken Nuggets':     'https://images.unsplash.com/photo-1562802378-063ec186a863?w=400&q=70',
-  'Siomai':              'https://scontent.fcrk4-2.fna.fbcdn.net/v/t1.15752-9/597555038_1194202065510199_2918454369703894241_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=615S4aKG7b0Q7kNvwF4OqB5&_nc_oc=AdpFMkNGoCyyOmIjf0rUY41E3pnnb6I8QhkxIW_p5VkVlvC-MrTTNAgardznDMe6N3w&_nc_zt=23&_nc_ht=scontent.fcrk4-2.fna&_nc_ss=7a3a8&oh=03_Q7cD5AGYqIRfhaG3d7JyFaPLF6U_8TQLf33UdNtW7b1eYjQhCA&oe=6A0B0638',
-  'Garlic Bread':        'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=70',
-  'Hotdog Sandwich':     'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=70',
-  'Mini Pizza':          'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=70',
-  'Chocolate Cake':      'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=70',
-  'Cheesecake':          'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&q=70',
-  'Brownies':            'https://images.unsplash.com/photo-1564355808539-22fda35bed7e?w=400&q=70',
-  'Cookies':             'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&q=70',
-  'Donuts':              'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&q=70',
-  'Ice Cream Sundae':    'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&q=70',
-  'Banana Split':        'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&q=70',
-  'Leche Flan':          'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&q=70',
-  'Halo-Halo':           'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&q=70',
-  'Crepe':               'https://images.unsplash.com/photo-1519676867240-f03562e64548?w=400&q=70',
+  'Espresso':'https://scontent.fcrk2-1.fna.fbcdn.net/v/t1.15752-9/668995266_3864731190500258_6798708586765315946_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=9f807c&_nc_ohc=f9ZGzWkguQcQ7kNvwGZ-9d3&_nc_oc=AdpI9tRvdFfmo6JGGwVjCY-ECLN2y8B8vXij-BJB5a-2tSSDItvyT84F-7YFJ6OFcgE&_nc_zt=23&_nc_ht=scontent.fcrk2-1.fna&_nc_ss=7a3a8&oh=03_Q7cD5AFtMTgWelShKbXp_XO4oUk4CB9dTJWa0w-F9EvuDpZe_A&oe=6A0AE920',
+  'Americano':'https://scontent.fcrk4-2.fna.fbcdn.net/v/t39.30808-6/489149907_3964517513876340_1671713616654944236_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=53a332&_nc_ohc=nvwEyApG1e0Q7kNvwFh4XKI&_nc_oc=AdpNCxL_ZfA6_Jo9ZQECnskBxtKlJYvpHml0vBtyrg_BWYlaD96YFTUOIDjQ5-H5gjs&_nc_zt=23&_nc_ht=scontent.fcrk4-2.fna&_nc_gid=yXsESLx4ng3D5vBzCGqbkA&_nc_ss=7a3a8&oh=00_Af0aTorUoSGMGpJnZgFiaHf0Rgfm-I47kTD1xUgU9ZgQOg&oe=69E94193',
+  'Cappuccino':'https://scontent.fcrk2-3.fna.fbcdn.net/v/t39.30808-6/673846263_1535764718556525_1370322982517594123_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=dnl2dDo_IskQ7kNvwGIgnE1&_nc_oc=Ado-jyZbVWr_-fNYB78HBALg_hQtZLZnym-V0uDnJp20fW62mc9YSE3LS0D8YoegxKg&_nc_zt=23&_nc_ht=scontent.fcrk2-3.fna&_nc_gid=Jcts-lR-sdVdXywKEHZ4og&_nc_ss=7a3a8&oh=00_Af1ElFw1wkGF942XyNvMCxnPMoG9xcOfmFTbBNma7e9bCA&oe=69E9435E',
+  'Latte':'https://scontent.fcrk2-1.fna.fbcdn.net/v/t1.15752-9/645498048_1455568805944735_3224774563183970203_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=9f807c&_nc_ohc=dz_d6yyOdcQQ7kNvwGKV8Pz&_nc_oc=AdqwncIaN8EzuGh1MV9YodAk67NNMZLERFgoJ0Wl4kwxY_4KmGTxAQ9-Y8HXP7fPY78&_nc_zt=23&_nc_ht=scontent.fcrk2-1.fna&_nc_ss=7a3a8&oh=03_Q7cD5AFpeQocyXUnqiDsXhqe2G3pCofkgXMN-UyajpLNZPPY7Q&oe=6A0B0924',
+  'Coffee Frappe':'https://scontent.fcrk4-2.fna.fbcdn.net/v/t1.15752-9/582330092_26117911804476830_3053487163137581342_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=9f807c&_nc_ohc=Owr-gGoSo8wQ7kNvwH-MDG3&_nc_oc=AdpGNnRNSeqyXXUsjtRJuOMD382N4mRfieNQjNpF2J_gs8oUo4bJO5rvsuPpF3Zt1ZE&_nc_zt=23&_nc_ht=scontent.fcrk4-2.fna&_nc_ss=7a3a8&oh=03_Q7cD5AE49mtIFdBLk9GxWjjAPgW8t16qkQ3o44-yMLLV_L9liw&oe=6A0AF561',
+  'Java Chip Frappe':'https://scontent.fcrk4-2.fna.fbcdn.net/v/t1.15752-9/589019906_1432287488231604_1872785800184385539_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_ohc=c-DrPdhUNlcQ7kNvwHVkvcE&_nc_oc=AdrHaPePucNmTqUARMyMM_ll2rVDNRcl6BJatrtLUSkXrOQu08fmV3HQYqFlBAgQxRY&_nc_zt=23&_nc_ht=scontent.fcrk4-2.fna&_nc_ss=7a3a8&oh=03_Q7cD5AEdVARpmUP-zH4-xGmPpiuTsbAi0NHUwMZQsz0gIQKKYQ&oe=6A0B0A84',
+  'Strawberry Frappe':'https://scontent.fcrk4-2.fna.fbcdn.net/v/t1.15752-9/597555038_1194202065510199_2918454369703894241_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=9f807c&_nc_ohc=615S4aKG7b0Q7kNvwF4OqB5&_nc_oc=AdpFMkNGoCyyOmIjf0rUY41E3pnnb6I8QhkxIW_p5VkVlvC-MrTTNAgardznDMe6N3w&_nc_zt=23&_nc_ht=scontent.fcrk4-2.fna&_nc_ss=7a3a8&oh=03_Q7cD5AGYqIRfhaG3d7JyFaPLF6U_8TQLf33UdNtW7b1eYjQhCA&oe=6A0B0638',
 };
 
 const MENU={
   Coffee:{icon:'☕',color:'#5C3317',items:[
-    {name:'Espresso',price:80,emoji:'☕',desc:'A concentrated shot of rich, bold espresso with deep roasted notes.'},
-    {name:'Americano',price:95,emoji:'🖤',desc:'Espresso diluted with hot water for a smooth, clean coffee experience.'},
-    {name:'Cappuccino',price:110,emoji:'🫧',desc:'Equal parts espresso, steamed milk, and velvety foam.'},
-    {name:'Latte',price:110,emoji:'🥛',desc:'Smooth espresso with generous steamed milk and a light foam cap.'},
-    {name:'Caramel Macchiato',price:130,emoji:'🍯',desc:'Vanilla-scented steamed milk with espresso and buttery caramel drizzle.'},
-    {name:'Mocha',price:120,emoji:'🍫',desc:'Espresso blended with rich chocolate syrup and steamed milk.'},
-    {name:'Vanilla Latte',price:120,emoji:'🌿',desc:'Sweet vanilla syrup with espresso and creamy steamed milk.'},
-    {name:'Hazelnut Coffee',price:120,emoji:'🌰',desc:'Warm hazelnut notes paired with bold espresso and silky milk.'},
-    {name:'Spanish Latte',price:120,emoji:'🧡',desc:'Espresso, steamed milk, and sweetened condensed milk — a Filipino favorite.'},
-    {name:'Cold Brew',price:130,emoji:'🧊',desc:'Coffee steeped cold for 12+ hours — smooth, low-acid, naturally sweet.'},
+    {name:'Espresso',price:80,emoji:'☕',desc:'A concentrated shot of rich, bold espresso.'},
+    {name:'Americano',price:95,emoji:'🖤',desc:'Espresso diluted with hot water.'},
+    {name:'Cappuccino',price:110,emoji:'🫧',desc:'Equal parts espresso, steamed milk, and foam.'},
+    {name:'Latte',price:110,emoji:'🥛',desc:'Espresso with steamed milk and foam cap.'},
+    {name:'Caramel Macchiato',price:130,emoji:'🍯',desc:'Vanilla, espresso, and caramel drizzle.'},
+    {name:'Mocha',price:120,emoji:'🍫',desc:'Espresso with chocolate syrup and steamed milk.'},
+    {name:'Vanilla Latte',price:120,emoji:'🌿',desc:'Sweet vanilla with espresso and steamed milk.'},
+    {name:'Hazelnut Coffee',price:120,emoji:'🌰',desc:'Hazelnut notes with bold espresso.'},
+    {name:'Spanish Latte',price:120,emoji:'🧡',desc:'Espresso, milk, and condensed milk.'},
+    {name:'Cold Brew',price:130,emoji:'🧊',desc:'Cold-steeped for 12+ hours.'},
   ]},
   Frappe:{icon:'🧊',color:'#1565C0',items:[
-    {name:'Coffee Frappe',price:140,emoji:'☕',desc:'Blended iced coffee with a creamy, frothy top.'},
-    {name:'Mocha Frappe',price:145,emoji:'🍫',desc:'Chocolate and espresso blended with ice and cream.'},
-    {name:'Caramel Frappe',price:145,emoji:'🍮',desc:'Caramel-infused blended ice with whipped cream.'},
-    {name:'Java Chip Frappe',price:150,emoji:'🍪',desc:'Coffee frappe loaded with chocolate chips.'},
-    {name:'Vanilla Cream Frappe',price:140,emoji:'🌸',desc:'Sweet vanilla blended with cream — no coffee.'},
-    {name:'Matcha Frappe',price:145,emoji:'🍵',desc:'Earthy Japanese matcha blended smooth with ice.'},
-    {name:'Chocolate Frappe',price:140,emoji:'🍫',desc:'Pure chocolate blended into a thick, indulgent frappe.'},
-    {name:'Oreo Frappe',price:150,emoji:'🖤',desc:'Crushed Oreo cookies blended with milk and cream.'},
-    {name:'Strawberry Frappe',price:145,emoji:'🍓',desc:'Fresh strawberry flavors blended with ice and cream.'},
-    {name:'Mango Frappe',price:145,emoji:'🥭',desc:'Tropical mango blended smooth with a creamy finish.'},
+    {name:'Coffee Frappe',price:140,emoji:'☕',desc:'Blended iced coffee with frothy top.'},
+    {name:'Mocha Frappe',price:145,emoji:'🍫',desc:'Chocolate and espresso blended with ice.'},
+    {name:'Caramel Frappe',price:145,emoji:'🍮',desc:'Caramel blended ice with whipped cream.'},
+    {name:'Java Chip Frappe',price:150,emoji:'🍪',desc:'Coffee frappe with chocolate chips.'},
+    {name:'Vanilla Cream Frappe',price:140,emoji:'🌸',desc:'Sweet vanilla blended with cream.'},
+    {name:'Matcha Frappe',price:145,emoji:'🍵',desc:'Japanese matcha blended with ice.'},
+    {name:'Chocolate Frappe',price:140,emoji:'🍫',desc:'Pure chocolate frappe.'},
+    {name:'Oreo Frappe',price:150,emoji:'🖤',desc:'Crushed Oreo with milk and cream.'},
+    {name:'Strawberry Frappe',price:145,emoji:'🍓',desc:'Fresh strawberry blended with cream.'},
+    {name:'Mango Frappe',price:145,emoji:'🥭',desc:'Tropical mango frappe.'},
   ]},
   'Milk-Based':{icon:'🥛',color:'#E65100',items:[
-    {name:'Classic Milk Tea',price:90,emoji:'🧋',desc:'Traditional black tea with milk and tapioca pearls.'},
-    {name:'Wintermelon Milk Tea',price:95,emoji:'🌿',desc:'Sweet wintermelon tea with creamy milk and chewy pearls.'},
-    {name:'Taro Milk Tea',price:95,emoji:'💜',desc:'Purple taro with rich milk tea — naturally nutty and sweet.'},
-    {name:'Matcha Latte',price:105,emoji:'🍵',desc:'Stone-ground matcha whisked with steamed oat milk.'},
-    {name:'Chocolate Milk',price:85,emoji:'🍫',desc:'Rich dark chocolate blended into creamy cold milk.'},
-    {name:'Strawberry Milk',price:85,emoji:'🍓',desc:'Fresh strawberry sauce swirled into cold sweet milk.'},
-    {name:'Banana Milk',price:85,emoji:'🍌',desc:'Smooth Korean-style banana milk, naturally sweet.'},
-    {name:'Honey Milk',price:90,emoji:'🍯',desc:'Warm milk drizzled with floral wildflower honey.'},
-    {name:'Brown Sugar Milk',price:100,emoji:'🤎',desc:'Tiger stripes of brown sugar syrup in fresh cold milk.'},
-    {name:'Almond Milk Drink',price:100,emoji:'🌰',desc:'Light almond milk with a hint of vanilla.'},
+    {name:'Classic Milk Tea',price:90,emoji:'🧋',desc:'Black tea with milk and tapioca pearls.'},
+    {name:'Wintermelon Milk Tea',price:95,emoji:'🌿',desc:'Wintermelon tea with pearls.'},
+    {name:'Taro Milk Tea',price:95,emoji:'💜',desc:'Purple taro milk tea.'},
+    {name:'Matcha Latte',price:105,emoji:'🍵',desc:'Matcha whisked with oat milk.'},
+    {name:'Chocolate Milk',price:85,emoji:'🍫',desc:'Dark chocolate blended into cold milk.'},
+    {name:'Strawberry Milk',price:85,emoji:'🍓',desc:'Strawberry sauce in sweet milk.'},
+    {name:'Banana Milk',price:85,emoji:'🍌',desc:'Korean-style banana milk.'},
+    {name:'Honey Milk',price:90,emoji:'🍯',desc:'Milk with wildflower honey.'},
+    {name:'Brown Sugar Milk',price:100,emoji:'🤎',desc:'Tiger-stripe brown sugar milk.'},
+    {name:'Almond Milk Drink',price:100,emoji:'🌰',desc:'Light almond milk with vanilla.'},
   ]},
   Snack:{icon:'🥪',color:'#558B2F',noSize:true,items:[
-    {name:'Clubhouse Sandwich',price:120,emoji:'🥪',desc:'Triple-decker with chicken, bacon, egg, and fresh veggies.'},
-    {name:'Ham & Cheese Sandwich',price:100,emoji:'🧀',desc:'Classic deli ham with melted cheese on toasted bread.'},
-    {name:'Tuna Sandwich',price:95,emoji:'🐟',desc:'Creamy tuna mix with cucumber and lettuce.'},
-    {name:'French Fries',price:75,emoji:'🍟',desc:'Crispy golden fries with a light seasoning.'},
-    {name:'Nachos with Cheese',price:90,emoji:'🫓',desc:'Crunchy tortilla chips loaded with warm cheese dip.'},
-    {name:'Chicken Nuggets',price:95,emoji:'🍗',desc:'6-piece crispy chicken nuggets with dipping sauce.'},
-    {name:'Siomai',price:80,emoji:'🥟',desc:'Steamed pork and shrimp dumplings with soy-calamansi dip.'},
-    {name:'Garlic Bread',price:70,emoji:'🥖',desc:'Toasted baguette with rich garlic butter and herbs.'},
-    {name:'Hotdog Sandwich',price:75,emoji:'🌭',desc:'Grilled hotdog in a soft bun with toppings.'},
-    {name:'Mini Pizza',price:110,emoji:'🍕',desc:'Mini flatbread pizza with tomato sauce and melted cheese.'},
+    {name:'Clubhouse Sandwich',price:120,emoji:'🥪',desc:'Triple-decker club sandwich.'},
+    {name:'Ham & Cheese Sandwich',price:100,emoji:'🧀',desc:'Classic deli ham with melted cheese.'},
+    {name:'Tuna Sandwich',price:95,emoji:'🐟',desc:'Creamy tuna with veggies.'},
+    {name:'French Fries',price:75,emoji:'🍟',desc:'Crispy golden fries.'},
+    {name:'Nachos with Cheese',price:90,emoji:'🫓',desc:'Tortilla chips with cheese dip.'},
+    {name:'Chicken Nuggets',price:95,emoji:'🍗',desc:'6-piece crispy nuggets.'},
+    {name:'Siomai',price:80,emoji:'🥟',desc:'Steamed pork and shrimp dumplings.'},
+    {name:'Garlic Bread',price:70,emoji:'🥖',desc:'Garlic butter toasted baguette.'},
+    {name:'Hotdog Sandwich',price:75,emoji:'🌭',desc:'Grilled hotdog in soft bun.'},
+    {name:'Mini Pizza',price:110,emoji:'🍕',desc:'Flatbread pizza with cheese.'},
   ]},
   Dessert:{icon:'🍰',color:'#AD1457',noSize:true,items:[
-    {name:'Chocolate Cake',price:130,emoji:'🎂',desc:'Rich layered chocolate cake with ganache frosting.'},
-    {name:'Cheesecake',price:130,emoji:'🍰',desc:'Creamy New York-style cheesecake on a buttery graham crust.'},
-    {name:'Brownies',price:90,emoji:'🍫',desc:'Fudgy dark chocolate brownies with walnut crunch.'},
-    {name:'Cookies',price:65,emoji:'🍪',desc:'Soft-baked chocolate chip cookies, fresh from the oven.'},
-    {name:'Donuts',price:70,emoji:'🍩',desc:'Glazed and filled donuts in assorted flavors.'},
-    {name:'Ice Cream Sundae',price:95,emoji:'🍨',desc:'Two scoops with hot fudge, nuts, and a cherry on top.'},
-    {name:'Banana Split',price:105,emoji:'🍌',desc:'Classic banana split with three scoops and toppings.'},
-    {name:'Leche Flan',price:85,emoji:'🟡',desc:'Silky Filipino custard with golden caramel glaze.'},
-    {name:'Halo-Halo',price:110,emoji:'🌈',desc:'The ultimate Filipino shaved ice dessert with all the toppings.'},
-    {name:'Crepe',price:100,emoji:'🥞',desc:'Thin French crepe with sweet fillings and powdered sugar.'},
+    {name:'Chocolate Cake',price:130,emoji:'🎂',desc:'Layered chocolate cake.'},
+    {name:'Cheesecake',price:130,emoji:'🍰',desc:'New York cheesecake.'},
+    {name:'Brownies',price:90,emoji:'🍫',desc:'Fudgy dark chocolate brownies.'},
+    {name:'Cookies',price:65,emoji:'🍪',desc:'Soft-baked chocolate chip cookies.'},
+    {name:'Donuts',price:70,emoji:'🍩',desc:'Glazed donuts.'},
+    {name:'Ice Cream Sundae',price:95,emoji:'🍨',desc:'Two scoops with toppings.'},
+    {name:'Banana Split',price:105,emoji:'🍌',desc:'Classic banana split.'},
+    {name:'Leche Flan',price:85,emoji:'🟡',desc:'Filipino custard caramel.'},
+    {name:'Halo-Halo',price:110,emoji:'🌈',desc:'Filipino shaved ice dessert.'},
+    {name:'Crepe',price:100,emoji:'🥞',desc:'Thin crepe with sweet fillings.'},
   ]},
 };
 
@@ -708,17 +852,25 @@ const TABLES_DATA=Array.from({length:20},(_,i)=>{
 });
 
 let ORDERS=[
-  {id:'#244',table:'T4',time:'13:35',status:'Completed',elapsed:520,items:[{qty:1,name:'Spanish Latte',detail:'M · Hot'},{qty:2,name:'Cheesecake',detail:''}]},
-  {id:'#168',table:'T2',time:'14:01',status:'Preparing',elapsed:210,items:[{qty:2,name:'Americano',detail:'L · Iced'},{qty:1,name:'Java Chip Frappe',detail:'L'},{qty:1,name:'French Fries',detail:''}]},
-  {id:'#205',table:'T12',time:'13:35',status:'Cancelled',elapsed:600,items:[{qty:2,name:'Caramel Macchiato',detail:'',struck:true},{qty:1,name:'Americano',detail:'L · Iced',struck:true}]},
-  {id:'#204',table:'T11',time:'15:23',status:'Ready',elapsed:380,items:[{qty:1,name:'Spanish Latte',detail:'M · Iced'},{qty:2,name:'Brownies',detail:''}]},
-  {id:'#467',table:'T5',time:'15:23',status:'Preparing',elapsed:155,items:[{qty:1,name:'Matcha Latte',detail:'L · Hot'},{qty:1,name:'Spanish Latte',detail:'L · Hot'},{qty:1,name:'Garlic Bread',detail:''},{qty:1,name:'Cookies',detail:''}]},
-  {id:'#148',table:'T14',time:'17:12',status:'New',elapsed:40,items:[{qty:2,name:'Caramel Frappe',detail:'L'},{qty:1,name:'Chicken Nuggets',detail:''},{qty:1,name:'Chocolate Cake',detail:''}]},
+  {id:'#244',table:'T4',time:'13:35',status:'Completed',elapsed:520,source:'customer',items:[{qty:1,name:'Spanish Latte',detail:'M · Hot'},{qty:2,name:'Cheesecake',detail:''}]},
+  {id:'#168',table:'T2',time:'14:01',status:'Preparing',elapsed:210,source:'customer',items:[{qty:2,name:'Americano',detail:'L · Iced'},{qty:1,name:'Java Chip Frappe',detail:'L'},{qty:1,name:'French Fries',detail:''}]},
+  {id:'#205',table:'T12',time:'13:35',status:'Cancelled',elapsed:600,source:'customer',items:[{qty:2,name:'Caramel Macchiato',detail:'',struck:true},{qty:1,name:'Americano',detail:'L · Iced',struck:true}]},
+  {id:'#204',table:'T11',time:'15:23',status:'Ready',elapsed:380,source:'customer',items:[{qty:1,name:'Spanish Latte',detail:'M · Iced'},{qty:2,name:'Brownies',detail:''}]},
+  {id:'#467',table:'T5',time:'15:23',status:'Preparing',elapsed:155,source:'customer',items:[{qty:1,name:'Matcha Latte',detail:'L · Hot'},{qty:1,name:'Spanish Latte',detail:'L · Hot'},{qty:1,name:'Garlic Bread',detail:''},{qty:1,name:'Cookies',detail:''}]},
+  {id:'#148',table:'T14',time:'17:12',status:'New',elapsed:40,source:'customer',items:[{qty:2,name:'Caramel Frappe',detail:'L'},{qty:1,name:'Chicken Nuggets',detail:''},{qty:1,name:'Chocolate Cake',detail:''}]},
 ];
 
 /* State */
 let selectedTable=null,cart=[],currentItem=null,currentQty=1,currentType='Iced',currentSize='M',selectedPayment='Cash';
 let orderCount=8,currentCat='All',searchQuery='',tableOrders={},adminFilter='New';
+
+/* Staff Manual Order State */
+let staffCart=[];
+let staffSelectedTable=null;
+let staffPayment='Cash';
+let staffCatFilter='All';
+let staffSearchQ='';
+let scCurrent=null,scType='Iced',scSize='M',scQty=1;
 
 /* ── SCREENS ── */
 function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
@@ -756,13 +908,14 @@ function confirmTable(){
 /* ── HELPERS ── */
 function getItem(cat,name){return MENU[cat]?.items.find(i=>i.name===name);}
 function fp(p){return `₱${p.toLocaleString()}`;}
-function getEmoji(name){for(const[,d] of Object.entries(MENU)){const f=d.items.find(x=>x.name===name);if(f)return f.emoji;}return'🍽️';}
-function getPrice(name){for(const[,d] of Object.entries(MENU)){const f=d.items.find(x=>x.name===name);if(f)return f.price;}return 100;}
+function getEmoji(name){for(const[,d]of Object.entries(MENU)){const f=d.items.find(x=>x.name===name);if(f)return f.emoji;}return'🍽️';}
+function getPrice(name){for(const[,d]of Object.entries(MENU)){const f=d.items.find(x=>x.name===name);if(f)return f.price;}return 100;}
+function getCat(name){for(const[cat,d]of Object.entries(MENU)){if(d.items.find(x=>x.name===name))return cat;}return'';}
 
-function imgTag(name,cls){
+function imgThumb(name,cls,eCls){
   const src=ITEM_IMAGES[name],e=getEmoji(name);
-  if(src)return`<img class="${cls}" src="${src}" alt="${name}" loading="lazy" onerror="this.outerHTML='<div class=\\'${cls}-e\\'>${e}</div>'">`;
-  return`<div class="${cls}-e">${e}</div>`;
+  if(src)return`<img class="${cls}" src="${src}" alt="${name}" loading="lazy" onerror="this.outerHTML='<div class=\\'${eCls}\\'>${e}</div>'">`;
+  return`<div class="${eCls}">${e}</div>`;
 }
 
 /* ── CATEGORY BAR ── */
@@ -926,7 +1079,7 @@ function cqChange(idx,d){cart[idx].qty=Math.max(1,cart[idx].qty+d);updateCartCou
 function removeItem(idx){cart.splice(idx,1);updateCartCount();renderCart();}
 function selPay(p){selectedPayment=p;renderCart();}
 
-/* ── PLACE ORDER ── */
+/* ── PLACE ORDER (customer) ── */
 function placeOrder(){
   if(!cart.length)return;
   orderCount++;
@@ -934,7 +1087,7 @@ function placeOrder(){
   const eta=new Date(now.getTime()+10*60000);
   const fmt=d=>d.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
   const oid=`#${orderCount}`;
-  const newOrder={id:oid,table:selectedTable,time:fmt(now),status:'New',elapsed:0,
+  const newOrder={id:oid,table:selectedTable,time:fmt(now),status:'New',elapsed:0,source:'customer',
     items:cart.map(i=>({qty:i.qty,name:i.name,detail:[i.type,i.size?`Size ${i.size}`:''].filter(Boolean).join(' · ')}))};
   ORDERS.unshift(newOrder);
   if(!tableOrders[selectedTable])tableOrders[selectedTable]=[];
@@ -946,7 +1099,6 @@ function placeOrder(){
   document.getElementById('ticketTbl').textContent=selectedTable;
   document.getElementById('etaTime').textContent=`${fmt(now)} – ${fmt(eta)}`;
   document.getElementById('successOverlay').classList.add('open');
-  // Simulate kitchen progression
   setTimeout(()=>advanceOrder(oid,'Preparing'),4000);
   setTimeout(()=>advanceOrder(oid,'Ready'),13000);
   setTimeout(()=>advanceOrder(oid,'Completed'),24000);
@@ -999,15 +1151,243 @@ function renderTableView(){
     <div class="tv-trow big"><span>Total</span><span>${fp(total+tax)}</span></div>`;
 }
 
-/* ── ADMIN ── */
-function refreshAdmin(){renderAdminHome();renderTableGrid2();renderOrdersAdmin();renderAlertGrid();renderAdminMenu();updateOrderCounts();}
+/* ══════════════════════════════════════════
+   STAFF MANUAL ORDER FUNCTIONS
+══════════════════════════════════════════ */
+
+function buildStaffMenu(){
+  // Category tabs
+  const cats=['All',...Object.keys(MENU)];
+  document.getElementById('staffCatTabs').innerHTML=cats.map(c=>
+    `<button class="staff-cat-tab${c===staffCatFilter?' active':''}" onclick="staffSetCat('${c}')">${c==='All'?'All':MENU[c].icon+' '+c}</button>`
+  ).join('');
+
+  // Items grid
+  let items=[];
+  if(staffSearchQ){
+    for(const[cat,d]of Object.entries(MENU))for(const item of d.items)
+      if(item.name.toLowerCase().includes(staffSearchQ)||cat.toLowerCase().includes(staffSearchQ))items.push({...item,cat});
+  } else if(staffCatFilter==='All'){
+    for(const[cat,d]of Object.entries(MENU))for(const item of d.items)items.push({...item,cat});
+  } else {
+    const d=MENU[staffCatFilter];
+    if(d)items=d.items.map(i=>({...i,cat:staffCatFilter}));
+  }
+
+  document.getElementById('staffItemsGrid').innerHTML=items.length?items.map(item=>{
+    const src=ITEM_IMAGES[item.name];
+    const thumb=src
+      ?`<img class="staff-item-img" src="${src}" alt="${item.name}" loading="lazy" onerror="this.outerHTML='<div class=staff-item-emoji>${item.emoji}</div>'">`
+      :`<div class="staff-item-emoji">${item.emoji}</div>`;
+    return`<div class="staff-item" onclick="staffOpenCust('${item.cat}','${item.name.replace(/'/g,"\\'")}')">
+      ${thumb}
+      <div class="staff-item-name">${item.name}</div>
+      <div class="staff-item-meta">
+        <span class="staff-item-price">${fp(item.price)}</span>
+        <span class="staff-item-cat">${item.cat}</span>
+      </div>
+    </div>`;
+  }).join(''):`<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--gt);font-size:0.84rem;">No items found.</div>`;
+}
+
+function staffSetCat(cat){
+  staffCatFilter=cat;staffSearchQ='';
+  document.getElementById('staffSearchInput').value='';
+  buildStaffMenu();
+}
+
+function staffHandleSearch(){
+  staffSearchQ=document.getElementById('staffSearchInput').value.toLowerCase();
+  staffCatFilter='All';buildStaffMenu();
+}
+
+/* Staff table selector */
+function buildStaffTableSel(){
+  document.getElementById('staffTblSel').innerHTML=TABLES_DATA.map(t=>{
+    const occ=t.status!=='empty';
+    return`<button class="staff-tbl-btn${occ?' occupied':''}${staffSelectedTable===t.id?' active':''}" onclick="staffSelTable('${t.id}')">${t.id}</button>`;
+  }).join('');
+}
+
+function staffSelTable(id){
+  staffSelectedTable=id;
+  buildStaffTableSel();
+  staffRenderOrderItems();
+  staffRenderFooter();
+}
+
+/* Staff customization modal */
+function staffOpenCust(cat,name){
+  const item=getItem(cat,name);
+  scCurrent={...item,cat};scQty=1;
+  scType=DRINK_CATS.includes(cat)?'Iced':null;
+  scSize=NO_SIZE.includes(cat)?null:'M';
+  document.getElementById('scItemName').textContent=name+' — '+fp(item.price);
+  document.getElementById('scQtyVal').textContent=1;
+  document.getElementById('scNote').value='';
+  const ts=document.getElementById('scTypeSection');
+  if(DRINK_CATS.includes(cat)){
+    ts.style.display='';
+    document.getElementById('scTypeOpts').innerHTML=['Hot','Iced'].map(t=>
+      `<button class="sc-btn${t===scType?' sel':''}" onclick="scSelType('${t}')">${t}</button>`).join('');
+  } else ts.style.display='none';
+  const ss=document.getElementById('scSizeSection');
+  if(NO_SIZE.includes(cat)){ss.style.display='none';}
+  else{
+    ss.style.display='';
+    document.getElementById('scSizeOpts').innerHTML=SIZES.map(s=>
+      `<button class="sc-btn${s===scSize?' sel':''}" onclick="scSelSize('${s}')">${s}</button>`).join('');
+  }
+  document.getElementById('staffCustOverlay').classList.add('open');
+}
+
+function closeStaffCust(){document.getElementById('staffCustOverlay').classList.remove('open');}
+function scSelType(t){scType=t;document.querySelectorAll('#scTypeOpts .sc-btn').forEach(b=>b.classList.toggle('sel',b.textContent===t));}
+function scSelSize(s){scSize=s;document.querySelectorAll('#scSizeOpts .sc-btn').forEach(b=>b.classList.toggle('sel',b.textContent===s));}
+function scChangeQty(d){scQty=Math.max(1,scQty+d);document.getElementById('scQtyVal').textContent=scQty;}
+
+function scConfirmAdd(){
+  if(!scCurrent)return;
+  const note=document.getElementById('scNote').value;
+  const key=`staff-${scCurrent.name}-${scType||''}-${scSize||''}`;
+  const ex=staffCart.find(i=>i.key===key);
+  if(ex)ex.qty+=scQty;
+  else staffCart.push({key,name:scCurrent.name,cat:scCurrent.cat,price:scCurrent.price,emoji:scCurrent.emoji,type:scType,size:scSize,note,qty:scQty});
+  closeStaffCust();
+  staffRenderOrderItems();
+  staffRenderFooter();
+  showToast(`${scCurrent.name} added to staff order!`);
+}
+
+function staffRenderOrderItems(){
+  const el=document.getElementById('staffOrderItems');
+  if(!staffCart.length){
+    el.innerHTML=`<div class="staff-empty-order"><div style="font-size:2rem;margin-bottom:.5rem;">🛒</div><p>Tap any item from the menu to add it here</p></div>`;
+    return;
+  }
+  el.innerHTML=staffCart.map((item,idx)=>{
+    const detail=[item.type,item.size?`${item.size}`:''].filter(Boolean).join(' · ');
+    return`<div class="staff-order-line">
+      <div class="staff-ol-emoji">${item.emoji}</div>
+      <div class="staff-ol-info">
+        <div class="staff-ol-name">${item.name}</div>
+        <div class="staff-ol-detail">${detail}${item.note?` · "${item.note}"`:''}
+        </div>
+      </div>
+      <div class="staff-ol-qty">
+        <button class="staff-sqb" onclick="staffQtyChange(${idx},-1)">−</button>
+        <span class="staff-ol-q">${item.qty}</span>
+        <button class="staff-sqb" onclick="staffQtyChange(${idx},1)">+</button>
+      </div>
+      <div class="staff-ol-price">${fp(item.price*item.qty)}</div>
+      <button class="staff-ol-rm" onclick="staffRemove(${idx})">✕</button>
+    </div>`;
+  }).join('');
+}
+
+function staffQtyChange(idx,d){
+  staffCart[idx].qty=Math.max(1,staffCart[idx].qty+d);
+  staffRenderOrderItems();staffRenderFooter();
+}
+
+function staffRemove(idx){
+  staffCart.splice(idx,1);
+  staffRenderOrderItems();staffRenderFooter();
+}
+
+function staffClearOrder(){
+  staffCart=[];staffSelectedTable=null;
+  buildStaffTableSel();
+  staffRenderOrderItems();staffRenderFooter();
+  document.getElementById('staffSuccessBanner').classList.remove('show');
+}
+
+function staffRenderFooter(){
+  // Payment
+  document.getElementById('staffPayRow').innerHTML=['Cash','GCash','Card'].map(p=>
+    `<button class="staff-pay-btn${p===staffPayment?' active':''}" onclick="staffSelPay('${p}')">${p}</button>`).join('');
+
+  const sub=staffCart.reduce((s,i)=>s+i.price*i.qty,0);
+  const discount=Math.max(0,parseInt(document.getElementById('staffDiscount')?.value||0)||0);
+  const tax=Math.round((sub-discount)*0.05);
+  const total=Math.max(0,sub-discount+tax);
+
+  document.getElementById('staffTotals').innerHTML=`
+    <div class="staff-tot-row"><span>Subtotal</span><span>${fp(sub)}</span></div>
+    <div class="staff-tot-row"><span>Discount</span><span>-${fp(discount)}</span></div>
+    <div class="staff-tot-row"><span>Tax (5%)</span><span>${fp(tax)}</span></div>
+    <div class="staff-tot-row big"><span>Total</span><span>${fp(total)}</span></div>`;
+
+  const btn=document.getElementById('staffPlaceBtn');
+  const canPlace=staffCart.length>0 && staffSelectedTable;
+  btn.disabled=!canPlace;
+  btn.textContent=canPlace?`Place Order for ${staffSelectedTable} — ${fp(total)}`:`Select table & add items`;
+}
+
+function staffSelPay(p){staffPayment=p;staffRenderFooter();}
+
+/* Staff Place Order */
+function staffPlaceOrder(){
+  if(!staffCart.length||!staffSelectedTable)return;
+  orderCount++;
+  const now=new Date();
+  const fmt=d=>d.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+  const oid=`#${orderCount}`;
+  const discount=Math.max(0,parseInt(document.getElementById('staffDiscount')?.value||0)||0);
+
+  const newOrder={
+    id:oid,
+    table:staffSelectedTable,
+    time:fmt(now),
+    status:'New',
+    elapsed:0,
+    source:'staff',
+    payment:staffPayment,
+    discount,
+    items:staffCart.map(i=>({qty:i.qty,name:i.name,detail:[i.type,i.size?`${i.size}`:''].filter(Boolean).join(' · ')}))
+  };
+
+  ORDERS.unshift(newOrder);
+
+  // Update table state
+  const t=TABLES_DATA.find(x=>x.id===staffSelectedTable);
+  if(t){t.status='orange';t.time='0:00';t.items=staffCart.reduce((s,i)=>s+i.qty,0);}
+
+  // Show success banner
+  document.getElementById('staffSuccessId').textContent=`Order ${oid} for ${staffSelectedTable}`;
+  const banner=document.getElementById('staffSuccessBanner');
+  banner.classList.add('show');
+  setTimeout(()=>banner.classList.remove('show'),4000);
+
+  showToast(`Staff order ${oid} placed for ${staffSelectedTable}!`);
+
+  // Auto-advance to Preparing
+  setTimeout(()=>advanceOrder(oid,'Preparing'),3000);
+  setTimeout(()=>advanceOrder(oid,'Ready'),11000);
+  setTimeout(()=>advanceOrder(oid,'Completed'),22000);
+
+  // Reset
+  staffCart=[];
+  document.getElementById('staffDiscount').value='0';
+  buildStaffTableSel();
+  staffRenderOrderItems();
+  staffRenderFooter();
+  updateOrderCounts();
+  renderAdminHome();
+}
+
+/* ══════════════════════════════════════════
+   ADMIN FUNCTIONS
+══════════════════════════════════════════ */
+function refreshAdmin(){renderAdminHome();renderTableGrid2();renderOrdersAdmin();renderAlertGrid();renderAdminMenu();updateOrderCounts();buildStaffMenu();buildStaffTableSel();staffRenderFooter();}
 
 function switchAdminPanel(name,btn){
   document.querySelectorAll('.sidebar-item').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
   document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));document.getElementById('panel-'+name).classList.add('active');
-  const titles={home:'Dashboard',orders:'Order Monitor (KDS)',tables:'Table Status',menu:'Menu Items',alert:'Alert & Billing'};
+  const titles={home:'Dashboard',orders:'Order Monitor (KDS)',tables:'Table Status',menu:'Staff — Manual Order',alert:'Alert & Billing'};
   document.getElementById('adminPanelTitle').textContent=titles[name]||'Dashboard';
   if(name==='orders')renderOrdersAdmin();
+  if(name==='menu'){buildStaffMenu();buildStaffTableSel();staffRenderFooter();}
 }
 
 function tblCardClass(t){
@@ -1054,9 +1434,10 @@ function renderOrdersAdmin(){
     const elapsed=o.elapsed||0;const m=Math.floor(elapsed/60),sec=elapsed%60;
     const timerLabel=`${m}:${sec.toString().padStart(2,'0')}`;
     const nextLabel={New:'→ Preparing',Preparing:'→ Ready',Ready:'→ Done'}[o.status]||'';
+    const srcBadge=o.source==='staff'?`<span style="background:rgba(212,168,67,0.25);color:var(--gold);font-size:0.6rem;padding:1px 6px;border-radius:10px;margin-left:4px;">STAFF</span>`:'';
     return`<div class="order-card">
       <div class="order-card-hd st-${o.status}">
-        <div><div class="oh-meta">${o.time} · <span class="oh-tbl">${o.table}</span></div></div>
+        <div><div class="oh-meta">${o.time} · <span class="oh-tbl">${o.table}</span>${srcBadge}</div></div>
         <div class="oh-id">${o.id}</div>
       </div>
       ${(o.status==='New'||o.status==='Preparing')?`<div class="order-timer${o.status==='Preparing'&&elapsed>180?' warn':''}">⏱ ${timerLabel}</div>`:''}
@@ -1112,25 +1493,7 @@ function selAlertTable(id){
 }
 
 function renderAdminMenu(){
-  let html='';
-  for(const[cat,d]of Object.entries(MENU)){
-    html+=`<div style="margin-bottom:1.8rem;">
-      <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--bd);margin-bottom:.65rem;display:flex;align-items:center;gap:7px;">
-        ${d.icon} ${cat}
-        ${CAT_IMAGES[cat]?`<img src="${CAT_IMAGES[cat]}" style="width:26px;height:26px;border-radius:50%;object-fit:cover;">`:''}</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.45rem;">
-        ${d.items.map(i=>{
-          const src=ITEM_IMAGES[i.name];
-          return`<div style="background:white;border-radius:9px;padding:.6rem .85rem;display:flex;align-items:center;gap:8px;box-shadow:var(--sh);">
-            ${src?`<img src="${src}" style="width:36px;height:36px;border-radius:7px;object-fit:cover;flex-shrink:0;" loading="lazy" onerror="this.outerHTML='<span style=font-size:1.3rem>${i.emoji}</span>'">`:`<span style="font-size:1.3rem;">${i.emoji}</span>`}
-            <div style="flex:1;min-width:0;"><div style="font-weight:600;font-size:.8rem;color:var(--bd);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${i.name}</div><div style="font-size:.7rem;color:var(--gt);">${fp(i.price)}</div></div>
-            <div style="font-size:.6rem;color:var(--gt);background:var(--gl);padding:2px 5px;border-radius:4px;flex-shrink:0;">${d.noSize?'Fixed':'S/M/L'}</div>
-          </div>`;
-        }).join('')}
-      </div>
-    </div>`;
-  }
-  document.getElementById('adminMenuList').innerHTML=html;
+  // kept for compat — staff panel now replaces this
 }
 
 function showToast(msg){
