@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SipSmart — Cafe Ordering</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══════════════════════ SCREEN 1: TABLE PICKER ══════════════════════ -->
+<div id="tablePickScreen" class="screen active">
+  <div class="tp-header">
+    <div class="logo">SipSmart<span>CAFE & MORE</span></div>
+    <button class="staff-btn" onclick="showAdmin()">🖥 Staff Panel</button>
+  </div>
+  <div class="tp-hero">
+    <h1>Welcome to<br><em>SipSmart Cafe</em></h1>
+    <p>First, select your table — then browse the menu</p>
+  </div>
+  <div class="tp-body">
+    <div class="tp-legend">
+      <div class="tp-leg"><div class="tp-dot" style="background:rgba(255,255,255,0.3)"></div>Available</div>
+      <div class="tp-leg"><div class="tp-dot" style="background:var(--gold)"></div>Selected</div>
+    </div>
+    <div class="tp-grid" id="tablePickGrid"></div>
+    <button class="tp-confirm" id="tpConfirmBtn" onclick="confirmTable()" disabled>Select a Table to Continue →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════ SCREEN 2: ORDER MENU ══════════════════════ -->
+<div id="orderApp" class="screen">
+  <header>
+    <div class="header-left">
+      <div class="logo" style="font-size:1.1rem;">SipSmart<span style="font-size:0.55rem;">CAFE</span></div>
+      <div class="table-badge" id="tableBadge">Table —</div>
+    </div>
+    <div class="header-right">
+      <button class="staff-btn" onclick="showAdmin()" style="font-size:0.7rem;">🖥 Staff</button>
+      <button class="cart-btn" onclick="openCart()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Cart <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+  <div class="search-wrap">
+    <div class="search-box">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8A7968" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" placeholder="Search drinks, snacks..." oninput="handleSearch()">
+    </div>
+  </div>
+  <div class="cat-bar" id="catBar"></div>
+  <main class="omenu" id="mainContent"></main>
+
+  <!-- Product Modal -->
+  <div class="modal-overlay" id="productModal" onclick="handleModalClick(event)">
+    <div class="modal-sheet">
+      <div class="modal-img-wrap" id="modalImgWrap"><button class="modal-close" onclick="closeModal()">✕</button></div>
+      <div class="modal-body">
+        <div class="modal-top"><div class="modal-title" id="modalName"></div><div class="modal-price-tag" id="modalPrice"></div></div>
+        <div class="modal-sub" id="modalCat"></div>
+        <div class="modal-desc" id="modalDesc"></div>
+        <div id="typeSection"><div class="opt-label">Type</div><div class="opt-row" id="typeOpts"></div></div>
+        <div id="sizeSection"><div class="opt-label">Size</div><div class="opt-row" id="sizeOpts"></div></div>
+        <div style="margin-bottom:0.9rem;">
+          <div class="opt-label">Note</div>
+          <input id="itemNote" type="text" placeholder="Special requests?" style="width:100%;padding:7px 11px;border:1.5px solid rgba(139,69,19,0.18);border-radius:9px;font-family:'Outfit',sans-serif;font-size:0.84rem;outline:none;color:var(--bd);">
+        </div>
+        <div class="qty-row">
+          <div class="opt-label" style="margin:0;">Qty</div>
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <span class="qty-val" id="qtyVal">1</span>
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay" id="cartOverlay" onclick="handleCartClick(event)">
+    <div class="cart-drawer">
+      <div class="cart-header"><h2>Your Order 🛒</h2><button class="cart-close" onclick="closeCart()">✕</button></div>
+      <div class="cart-tbl-info" id="cartTblInfo">Ordering for Table —</div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-footer" id="cartFooter"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <nav class="bottom-nav">
+    <button class="nav-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Menu
+    </button>
+    <button class="nav-item" onclick="goTableView()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>My Table
+    </button>
+    <div class="nav-center"><div class="nav-center-btn" onclick="openCart()">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2C1A0E" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    </div></div>
+    <button class="nav-item" onclick="goTableView()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Track
+    </button>
+    <button class="nav-item" onclick="showAdmin()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>Staff
+    </button>
+  </nav>
+</div>
+
+<!-- ══════════════════════ SCREEN 3: TABLE VIEW ══════════════════════ -->
+<div id="tableViewScreen" class="screen">
+  <div class="tv-header">
+    <div class="logo" style="font-size:1.05rem;">SipSmart<span style="font-size:0.52rem;">CAFE</span></div>
+    <button class="tv-back" onclick="showScreen('orderApp')">← Back to Menu</button>
+  </div>
+  <div class="tv-body">
+    <div class="tv-table-card">
+      <div class="tv-tbl-label">Your Table</div>
+      <div class="tv-tbl-num" id="tvTableNum">—</div>
+      <div class="tv-order-id" id="tvOrderId">No orders yet</div>
+    </div>
+    <div class="tv-status-track" id="tvStatusTrack"></div>
+    <div class="tv-order-card">
+      <div class="tv-order-title">Your Orders</div>
+      <div id="tvOrderItems" style="color:var(--gt);text-align:center;padding:1.5rem 0;font-size:0.86rem;">No items yet — add from the menu!</div>
+    </div>
+    <div class="tv-total-box" id="tvTotalBox" style="display:none;"></div>
+    <button class="tv-add-more" onclick="showScreen('orderApp')">+ Add More Items</button>
+  </div>
+</div>
+
+<!-- ══════════════════════ SUCCESS OVERLAY ══════════════════════ -->
+<div class="success-overlay" id="successOverlay">
+  <div class="order-ticket">
+    <div class="ticket-label">Order Number</div>
+    <div class="ticket-num" id="orderNum">—</div>
+    <div class="ticket-tbl" id="ticketTbl">Table —</div>
+  </div>
+  <div class="success-msg">
+    <h2>Order Placed! ☕</h2>
+    <p>Estimated wait time</p>
+    <div class="eta" id="etaTime"></div>
+  </div>
+  <button class="done-btn" onclick="afterOrder()">View My Table →</button>
+</div>
+
+<!-- ══════════════════════ ADMIN APP ══════════════════════ -->
+<div id="adminApp" class="screen">
+  <div class="admin-sidebar">
+    <div class="sidebar-logo">SipSmart<small>STAFF</small></div>
+    <div class="sidebar-nav">
+      <button class="sidebar-item active" onclick="switchAdminPanel('home',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Dashboard
+      </button>
+      <button class="sidebar-item" onclick="switchAdminPanel('orders',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>Orders
+      </button>
+      <button class="sidebar-item" onclick="switchAdminPanel('menu',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>Manual Order
+      </button>
+    </div>
+    <div class="sidebar-bottom">
+      <button class="back-btn-s" onclick="showScreen('orderApp')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Store
+      </button>
+    </div>
+  </div>
+  <div class="admin-main">
+    <div class="admin-topbar">
+      <h1 id="adminPanelTitle">Dashboard</h1>
+      <div class="live-badge"><div class="live-dot"></div>Live</div>
+    </div>
+    <div class="admin-content">
+
+      <!-- HOME -->
+      <div class="admin-panel active" id="panel-home">
+        <div class="stats-row">
+          <div class="stat-card"><div class="stat-val" id="stat-total">0</div><div class="stat-label">Total Orders Today</div><span class="stat-badge badge-green">↑ Active</span></div>
+          <div class="stat-card"><div class="stat-val" id="stat-new">0</div><div class="stat-label">New / Incoming</div><span class="stat-badge badge-orange">🔔 Pending</span></div>
+          <div class="stat-card"><div class="stat-val" id="stat-prep">0</div><div class="stat-label">Preparing</div><span class="stat-badge badge-orange">⏳ Kitchen</span></div>
+          <div class="stat-card"><div class="stat-val" id="stat-tbls">0</div><div class="stat-label">Tables Occupied</div><span class="stat-badge badge-orange">🪑 Seated</span></div>
+        </div>
+        <div class="section-title-a">Live Table Overview</div>
+        <div class="legend">
+          <div class="leg-item"><div class="leg-dot" style="background:var(--glight)"></div>Active/Ready</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#FF9800"></div>Preparing</div>
+          <div class="leg-item"><div class="leg-dot" style="background:var(--red)"></div>Long Wait</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#ccc"></div>Empty</div>
+        </div>
+        <div class="tbl-grid" id="homeTableGrid"></div>
+        <div class="home-table-orders" id="homeTableOrders"></div>
+      </div>
+
+      <!-- ORDERS KDS -->
+      <div class="admin-panel" id="panel-orders">
+        <div class="kds-tabs">
+          <button class="kds-tab active" onclick="filterOrders('New',this)">🔔 New <span class="kds-count" id="cnt-New">0</span></button>
+          <button class="kds-tab" onclick="filterOrders('Preparing',this)">⏳ Preparing <span class="kds-count" id="cnt-Preparing">0</span></button>
+          <button class="kds-tab" onclick="filterOrders('Ready',this)">✅ Ready <span class="kds-count" id="cnt-Ready">0</span></button>
+          <button class="kds-tab" onclick="filterOrders('Completed',this)">Done <span class="kds-count" id="cnt-Completed">0</span></button>
+          <button class="kds-tab" onclick="filterOrders('All',this)">All</button>
+        </div>
+        <div class="orders-grid" id="ordersGrid"></div>
+      </div>
+
+      <!-- ══ STAFF MANUAL ORDER PANEL ══ -->
+      <div class="admin-panel" id="panel-menu">
+        <div class="staff-success-banner" id="staffSuccessBanner">
+          <div class="ssb-icon">✅</div>
+          <div class="ssb-text">Order placed successfully! <span class="ssb-id" id="staffSuccessId"></span></div>
+        </div>
+        <div class="staff-order-layout">
+          <!-- LEFT: Menu Browser -->
+          <div class="staff-menu-col">
+            <div class="staff-menu-top">
+              <div class="staff-search">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A7968" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                <input type="text" id="staffSearchInput" placeholder="Search items..." oninput="staffHandleSearch()">
+              </div>
+              <div class="staff-cat-tabs" id="staffCatTabs"></div>
+            </div>
+            <div class="staff-items-scroll">
+              <div class="staff-items-grid" id="staffItemsGrid"></div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Order Builder -->
+          <div class="staff-order-col">
+            <div class="staff-order-card">
+              <div class="staff-order-hd">
+                <h3>🧾 Current Order</h3>
+                <button class="staff-clear-btn" onclick="staffClearOrder()">Clear All ✕</button>
+              </div>
+
+              <!-- Table Selector -->
+              <div class="staff-tbl-picker">
+                <span class="staff-tbl-label">Table:</span>
+                <div class="staff-tbl-sel" id="staffTblSel"></div>
+              </div>
+
+              <div class="staff-order-items" id="staffOrderItems">
+                <div class="staff-empty-order">
+                  <div style="font-size:2rem;margin-bottom:.5rem;">🛒</div>
+                  <p>Tap any item from the menu to add it here</p>
+                </div>
+              </div>
+
+              <div class="staff-order-footer">
+                <div class="staff-pay-row" id="staffPayRow"></div>
+                <div class="staff-discount-row">
+                  <label>Discount ₱</label>
+                  <input type="number" id="staffDiscount" min="0" value="0" placeholder="0" oninput="staffRenderFooter()">
+                </div>
+                <div class="staff-totals-mini" id="staffTotals"></div>
+                <button class="staff-place-btn" id="staffPlaceBtn" onclick="staffPlaceOrder()" disabled>Place Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Staff Item Customization Modal -->
+<div class="staff-cust-overlay" id="staffCustOverlay" onclick="if(event.target===this)closeStaffCust()">
+  <div class="staff-cust-sheet">
+    <div class="staff-cust-hd">
+      <h3 id="scItemName">Item</h3>
+      <button class="staff-cust-close" onclick="closeStaffCust()">✕</button>
+    </div>
+    <div class="staff-cust-body">
+      <div id="scTypeSection">
+        <div class="scl">Type</div>
+        <div class="scr" id="scTypeOpts"></div>
+      </div>
+      <div id="scSizeSection">
+        <div class="scl">Size</div>
+        <div class="scr" id="scSizeOpts"></div>
+      </div>
+      <div class="scl">Quantity</div>
+      <div class="sc-qty-row">
+        <button class="sc-qb" onclick="scChangeQty(-1)">−</button>
+        <span class="sc-qv" id="scQtyVal">1</span>
+        <button class="sc-qb" onclick="scChangeQty(1)">+</button>
+      </div>
+      <div class="scl">Note (optional)</div>
+      <input type="text" class="sc-note" id="scNote" placeholder="e.g. less sugar, extra hot...">
+      <button class="sc-add-btn" onclick="scConfirmAdd()">Add to Order</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
